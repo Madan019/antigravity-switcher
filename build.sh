@@ -74,6 +74,9 @@ EOF
 # 6. Ad-hoc code sign the app bundle
 codesign --force --deep --sign - "$APP_DIR" 2>/dev/null || true
 
+# 7. Clear any stale TCC privacy permissions from legacy child-process runs
+tccutil reset All com.google.antigravity.switcher 2>/dev/null || true
+
 # 7. Refresh macOS LaunchServices
 if [ -f "/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister" ]; then
     /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -f "$APP_DIR" 2>/dev/null || true

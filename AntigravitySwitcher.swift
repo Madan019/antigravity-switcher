@@ -262,6 +262,7 @@ class SwitcherWindowController: NSObject, NSApplicationDelegate, NSWindowDelegat
     var webView: SwitcherWebView!
     var statusTimer: Timer?
     var signinProcess: Process?
+    var signinApp: NSRunningApplication?
     var signinTimer: Timer?
     
     let homeDir = FileManager.default.homeDirectoryForCurrentUser
@@ -728,21 +729,29 @@ class SwitcherWindowController: NSObject, NSApplicationDelegate, NSWindowDelegat
             try? data.write(to: storageFile)
         }
         
-        let proc = Process()
-        proc.executableURL = URL(fileURLWithPath: binaryPath)
-        proc.arguments = ["--user-data-dir=\(signinUserData.path)"]
+        let appBundlePath = binaryPath.contains("Antigravity IDE") ?
+            "/Applications/Antigravity IDE.app" :
+            "/Applications/Antigravity.app"
+        let appURL = URL(fileURLWithPath: appBundlePath)
+        
+        let config = NSWorkspace.OpenConfiguration()
+        config.arguments = ["--user-data-dir=\(signinUserData.path)"]
         var env = ProcessInfo.processInfo.environment
         env["HOME"] = signinHome.path
         env.removeValue(forKey: "ANTIGRAVITY_GEMINI_DIR")
-        proc.environment = env
+        config.environment = env
+        config.createsNewApplicationInstance = true
+        config.activates = true
         
-        do {
-            try proc.run()
-            self.signinProcess = proc
-            
-            // Watch for sign-in completion in signinGemini
-            signinTimer?.invalidate()
-            signinTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
+        NSWorkspace.shared.openApplication(at: appURL, configuration: config) { [weak self] runningApp, error in
+            if let app = runningApp {
+                self?.signinApp = app
+            }
+        }
+        
+        // Watch for sign-in completion in signinGemini
+        signinTimer?.invalidate()
+        signinTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] timer in
                 guard let self = self else { return }
                 
                 var detectedEmail: String? = nil
@@ -820,6 +829,8 @@ class SwitcherWindowController: NSObject, NSApplicationDelegate, NSWindowDelegat
                 // Clean up and terminate temp window
                 timer.invalidate()
                 self.signinTimer = nil
+                self.signinApp?.terminate()
+                self.signinApp = nil
                 self.signinProcess?.terminate()
                 self.signinProcess = nil
                 try? FileManager.default.removeItem(at: signinDir)
@@ -833,14 +844,13 @@ class SwitcherWindowController: NSObject, NSApplicationDelegate, NSWindowDelegat
                     self.webView.evaluateJavaScript("if (window.onSignInHelperComplete) window.onSignInHelperComplete('\(email)');", completionHandler: nil)
                 }
             }
-        } catch {
-            print("Failed to start signin helper: \(error)")
         }
-    }
     
     func cancelAccountCSignIn() {
         signinTimer?.invalidate()
         signinTimer = nil
+        signinApp?.terminate()
+        signinApp = nil
         signinProcess?.terminate()
         signinProcess = nil
         let signinDir = profilesDir.appendingPathComponent("signin-helper")
@@ -929,17 +939,17 @@ class SwitcherWindowController: NSObject, NSApplicationDelegate, NSWindowDelegat
             return
         }
         
-        let binaryPath = ide ?
-            "/Applications/Antigravity IDE.app/Contents/MacOS/Electron" :
-            "/Applications/Antigravity.app/Contents/MacOS/Antigravity"
+        let appBundlePath = ide ?
+            "/Applications/Antigravity IDE.app" :
+            "/Applications/Antigravity.app"
+        let appURL = URL(fileURLWithPath: appBundlePath)
         
-        guard FileManager.default.fileExists(atPath: binaryPath) else {
-            print("Binary not found: \(binaryPath)")
+        guard FileManager.default.fileExists(atPath: appBundlePath) else {
+            print("Application not found: \(appBundlePath)")
             return
         }
         
-        let proc = Process()
-        proc.executableURL = URL(fileURLWithPath: binaryPath)
+        var procArgs: [String] = []
         var env = ProcessInfo.processInfo.environment
         
         if pName == "personal" && !ide {
@@ -964,7 +974,7 @@ class SwitcherWindowController: NSObject, NSApplicationDelegate, NSWindowDelegat
             
             env["HOME"] = homeDir.path
             env.removeValue(forKey: "ANTIGRAVITY_GEMINI_DIR")
-            proc.arguments = []
+            procArgs = []
         } else {
             // Dedicated isolated profile
             let pDir = profilesDir.appendingPathComponent(pName)
@@ -993,27 +1003,34 @@ class SwitcherWindowController: NSObject, NSApplicationDelegate, NSWindowDelegat
             
             env["HOME"] = pHome.path
             env["ANTIGRAVITY_GEMINI_DIR"] = geminiDir.path
-            proc.arguments = ["--user-data-dir=\(userDataDir.path)"]
-            
-            let logFile = pDir.appendingPathComponent(ide ? "antigravity-ide.log" : "antigravity.log")
-            if !FileManager.default.fileExists(atPath: logFile.path) {
-                FileManager.default.createFile(atPath: logFile.path, contents: nil)
-            }
-            if let handle = try? FileHandle(forWritingTo: logFile) {
-                handle.seekToEndOfFile()
-                proc.standardOutput = handle
-                proc.standardError = handle
-            }
+            procArgs = ["--user-data-dir=\(userDataDir.path)"]
         }
         
-        proc.environment = env
+        let config = NSWorkspace.OpenConfiguration()
+        config.arguments = procArgs
+        config.environment = env
+        config.createsNewApplicationInstance = (pName != "personal")
+        config.activates = true
         
-        do {
-            try proc.run()
-            let spawnedPid = proc.processIdentifier
-            if pName != "personal" {
-                let pidFile = profilesDir.appendingPathComponent("\(pName)/run.pid")
-                try? "\(spawnedPid)\n".write(to: pidFile, atomically: true, encoding: .utf8)
+        NSWorkspace.shared.openApplication(at: appURL, configuration: config) { [weak self] runningApp, error in
+            guard let self = self else { return }
+            if let error = error {
+                print("Failed to launch \(pName) via NSWorkspace: \(error)")
+                let fallback = Process()
+                fallback.executableURL = URL(fileURLWithPath: ide ? "\(appBundlePath)/Contents/MacOS/Electron" : "\(appBundlePath)/Contents/MacOS/Antigravity")
+                fallback.arguments = procArgs
+                fallback.environment = env
+                try? fallback.run()
+                if let pid = fallback.processIdentifier as pid_t?, pName != "personal" {
+                    let pidFile = self.profilesDir.appendingPathComponent("\(pName)/run.pid")
+                    try? "\(pid)\n".write(to: pidFile, atomically: true, encoding: .utf8)
+                }
+            } else if let app = runningApp {
+                let spawnedPid = app.processIdentifier
+                if pName != "personal" {
+                    let pidFile = self.profilesDir.appendingPathComponent("\(pName)/run.pid")
+                    try? "\(spawnedPid)\n".write(to: pidFile, atomically: true, encoding: .utf8)
+                }
             }
             
             // Fast status refresh loop after launching
@@ -1022,8 +1039,6 @@ class SwitcherWindowController: NSObject, NSApplicationDelegate, NSWindowDelegat
                     self?.sendProfiles()
                 }
             }
-        } catch {
-            print("Failed to launch: \(error)")
         }
     }
     
