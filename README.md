@@ -20,6 +20,20 @@ A native macOS application and identity management utility for **Google Antigrav
 
 ---
 
+## Screenshots & Visual Walkthrough
+
+### ☀️ Light Theme & 🌙 Dark Theme
+| Light Mode (Material 3) | Dark Mode (Google Dark) |
+| :---: | :---: |
+| <img src="docs/screenshots/main_light.png" width="450" alt="Main Window Light Mode"> | <img src="docs/screenshots/main_dark.png" width="450" alt="Main Window Dark Mode"> |
+
+### 🔑 Google Accounts Manager & ⚙️ Settings
+| Multi-Account Pool Switching | Preferences & Theme Settings |
+| :---: | :---: |
+| <img src="docs/screenshots/google_accounts_modal.png" width="450" alt="Google Accounts Switcher Modal"> | <img src="docs/screenshots/settings_modal.png" width="450" alt="Settings & Customization Modal"> |
+
+---
+
 ## Project Structure
 
 ```
