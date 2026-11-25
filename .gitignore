@@ -1,0 +1,32 @@
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Compiled Binaries & App Bundles
+AntigravitySwitcher
+*.app/
+*.dSYM/
+*.o
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Temporary & Logs
+*.log
+*.tmp
+*.bak
+scratch/
+test_*
+signin-helper/
+run.pid
+SingletonLock

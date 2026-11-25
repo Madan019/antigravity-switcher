@@ -1,0 +1,2240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Who's using Antigravity?</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-color: #f8fafd;
+      --surface-card: #ffffff;
+      --surface-container: #f1f3f4;
+      --surface-hover: #f1f3f4;
+      --surface-tonal: #e8f0fe;
+      --text-primary: #202124;
+      --text-secondary: #5f6368;
+      --text-subtle: #80868b;
+      --border-color: #dadce0;
+      --border-subtle: #e8eaed;
+      --divider-color: #e8eaed;
+      --btn-primary-bg: #1a73e8;
+      --btn-primary-hover: #1557b0;
+      --btn-primary-text: #ffffff;
+      --m3-blue: #1a73e8;
+      --m3-blue-hover: #1557b0;
+      --m3-blue-container: #d2e3fc;
+      --m3-blue-text: #174ea6;
+      --m3-green: #1e8e3e;
+      --m3-green-bg: #e6f4ea;
+      --m3-red: #d93025;
+      --m3-red-hover: #b31412;
+      --m3-red-container: #fce8e6;
+      --m3-yellow: #f29900;
+      --card-shadow: 0 1px 2px 0 rgba(60,64,67,0.1), 0 2px 6px 2px rgba(60,64,67,0.06);
+      --card-shadow-hover: 0 4px 12px 0 rgba(60,64,67,0.16), 0 1px 3px 0 rgba(60,64,67,0.12);
+      --modal-bg: #ffffff;
+      --modal-shadow: 0 8px 24px -4px rgba(60,64,67,0.2), 0 16px 40px -4px rgba(60,64,67,0.15);
+    }
+
+    /* System Dark Mode (Authentic Google Dark) */
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]), body:not([data-theme="light"]) {
+        --bg-color: #202124;
+        --surface-card: #292a2d;
+        --surface-container: #303134;
+        --surface-hover: #35373b;
+        --surface-tonal: #283446;
+        --text-primary: #e8eaed;
+        --text-secondary: #9aa0a6;
+        --text-subtle: #80868b;
+        --border-color: #3c4043;
+        --border-subtle: #303134;
+        --divider-color: #3c4043;
+        --btn-primary-bg: #1a73e8;
+        --btn-primary-hover: #1b66c9;
+        --btn-primary-text: #ffffff;
+        --m3-blue: #8ab4f8;
+        --m3-blue-hover: #aecbfa;
+        --m3-blue-container: #174ea6;
+        --m3-blue-text: #8ab4f8;
+        --m3-green: #81c995;
+        --m3-green-bg: #133924;
+        --m3-red: #f28b82;
+        --m3-red-hover: #f6aea9;
+        --m3-red-container: #501311;
+        --m3-yellow: #fdd663;
+        --card-shadow: 0 2px 6px 0 rgba(0,0,0,0.35);
+        --card-shadow-hover: 0 8px 18px 0 rgba(0,0,0,0.5);
+        --modal-bg: #292a2d;
+        --modal-shadow: 0 12px 36px 0 rgba(0,0,0,0.7);
+      }
+    }
+
+    /* Explicit Dark Theme (Authentic Google Dark) */
+    [data-theme="dark"], :root[data-theme="dark"], body[data-theme="dark"] {
+      --bg-color: #202124 !important;
+      --surface-card: #292a2d !important;
+      --surface-container: #303134 !important;
+      --surface-hover: #35373b !important;
+      --surface-tonal: #283446 !important;
+      --text-primary: #e8eaed !important;
+      --text-secondary: #9aa0a6 !important;
+      --text-subtle: #80868b !important;
+      --border-color: #3c4043 !important;
+      --border-subtle: #303134 !important;
+      --divider-color: #3c4043 !important;
+      --btn-primary-bg: #1a73e8 !important;
+      --btn-primary-hover: #1b66c9 !important;
+      --btn-primary-text: #ffffff !important;
+      --m3-blue: #8ab4f8 !important;
+      --m3-blue-hover: #aecbfa !important;
+      --m3-blue-container: #174ea6 !important;
+      --m3-blue-text: #8ab4f8 !important;
+      --m3-green: #81c995 !important;
+      --m3-green-bg: #133924 !important;
+      --m3-red: #f28b82 !important;
+      --m3-red-hover: #f6aea9 !important;
+      --m3-red-container: #501311 !important;
+      --m3-yellow: #fdd663 !important;
+      --card-shadow: 0 2px 6px 0 rgba(0,0,0,0.35) !important;
+      --card-shadow-hover: 0 8px 18px 0 rgba(0,0,0,0.5) !important;
+      --modal-bg: #292a2d !important;
+      --modal-shadow: 0 12px 36px 0 rgba(0,0,0,0.7) !important;
+    }
+
+    /* Explicit Light Theme */
+    [data-theme="light"], :root[data-theme="light"], body[data-theme="light"] {
+      --bg-color: #f8fafd !important;
+      --surface-card: #ffffff !important;
+      --surface-container: #f1f3f4 !important;
+      --surface-hover: #f1f3f4 !important;
+      --surface-tonal: #e8f0fe !important;
+      --text-primary: #202124 !important;
+      --text-secondary: #5f6368 !important;
+      --text-subtle: #80868b !important;
+      --border-color: #dadce0 !important;
+      --border-subtle: #e8eaed !important;
+      --divider-color: #e8eaed !important;
+      --btn-primary-bg: #1a73e8 !important;
+      --btn-primary-hover: #1557b0 !important;
+      --btn-primary-text: #ffffff !important;
+      --m3-blue: #1a73e8 !important;
+      --m3-blue-hover: #1557b0 !important;
+      --m3-blue-container: #d2e3fc !important;
+      --m3-blue-text: #174ea6 !important;
+      --m3-green: #1e8e3e !important;
+      --m3-green-bg: #e6f4ea !important;
+      --m3-red: #d93025 !important;
+      --m3-red-hover: #b31412 !important;
+      --m3-red-container: #fce8e6 !important;
+      --m3-yellow: #f29900 !important;
+      --card-shadow: 0 1px 2px 0 rgba(60,64,67,0.1), 0 2px 6px 2px rgba(60,64,67,0.06) !important;
+      --card-shadow-hover: 0 4px 12px 0 rgba(60,64,67,0.16), 0 1px 3px 0 rgba(60,64,67,0.12) !important;
+      --modal-bg: #ffffff !important;
+      --modal-shadow: 0 8px 24px -4px rgba(60,64,67,0.2), 0 16px 40px -4px rgba(60,64,67,0.15) !important;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Google Sans', Roboto, -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-primary);
+      min-height: 100vh;
+      user-select: none;
+      -webkit-user-select: none;
+      overflow-x: hidden;
+      position: relative;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    /* Google 4-Color Accent Strip at Very Top */
+    .google-color-bar {
+      height: 3px;
+      width: 100%;
+      background: linear-gradient(90deg, #4285F4 0% 25%, #EA4335 25% 50%, #FBBC05 50% 75%, #34A853 75% 100%);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 100;
+    }
+
+    .main-wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      padding: 38px 32px 32px 32px;
+      transition: opacity 0.2s ease;
+    }
+
+    body.modal-open .main-wrapper {
+      opacity: 0.18;
+      pointer-events: none;
+    }
+
+    /* Top Brand & Header */
+    .header-area {
+      text-align: center;
+      margin-bottom: 30px;
+      position: relative;
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .header-top-bar {
+      position: absolute;
+      top: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .icon-button {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1px solid var(--border-subtle);
+      background: var(--surface-card);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.1s ease;
+    }
+
+    .icon-button:hover {
+      background-color: var(--surface-hover);
+      border-color: var(--border-color);
+      color: var(--text-primary);
+      transform: translateY(-1px);
+    }
+
+    .icon-button:active {
+      transform: translateY(0);
+    }
+
+    .google-logo-wrapper {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--text-primary);
+      letter-spacing: -0.5px;
+      margin-bottom: 6px;
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: var(--text-secondary);
+      font-weight: 400;
+    }
+
+    /* Profiles Grid - Authentic Google Chrome Profile Picker */
+    .profiles-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: stretch;
+      gap: 22px;
+      max-width: 960px;
+      width: 100%;
+      margin-bottom: 32px;
+    }
+
+    .profile-card {
+      background: var(--surface-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      width: 250px;
+      padding: 26px 20px 20px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+      cursor: pointer;
+      box-shadow: var(--card-shadow);
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .profile-card:hover {
+      background-color: var(--surface-hover);
+      border-color: var(--border-color);
+    }
+
+    .profile-card.active-session {
+      border: 2px solid var(--btn-primary-bg);
+      padding: 25px 19px 19px 19px;
+    }
+
+    .profile-card.active-session:hover {
+      border-color: var(--btn-primary-bg);
+      background-color: var(--surface-hover);
+    }
+
+    .active-dot-indicator {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--m3-green);
+      box-shadow: 0 0 0 3px var(--m3-green-bg);
+    }
+
+    .card-delete-btn {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: var(--text-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .card-delete-btn:hover {
+      opacity: 1;
+      background-color: var(--m3-red-container);
+      color: var(--m3-red);
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      margin-bottom: 14px;
+    }
+
+    .avatar-circle {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 500;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    }
+
+    .google-badge {
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
+      width: 24px;
+      height: 24px;
+      background: var(--surface-card);
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4px;
+    }
+
+    .profile-name {
+      font-size: 16.5px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+      text-align: center;
+    }
+
+    .profile-email-text {
+      font-size: 12px;
+      color: var(--text-secondary);
+      font-family: Roboto, sans-serif;
+      text-align: center;
+      max-width: 210px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-bottom: 16px;
+    }
+
+    /* Google Account Switcher Pill on Card */
+    .google-account-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      max-width: 210px;
+      padding: 4px 10px 4px 12px;
+      border-radius: 100px;
+      background-color: var(--surface-container);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-primary);
+      font-size: 12px;
+      font-family: Roboto, sans-serif;
+      font-weight: 500;
+      cursor: pointer;
+      margin-bottom: 16px;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .google-account-pill:hover {
+      background-color: var(--surface-tonal);
+      border-color: var(--m3-blue);
+      color: var(--m3-blue);
+    }
+
+    .google-account-pill .pill-email {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .status-area {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn-open-outlined {
+      width: 100%;
+      height: 38px;
+      border-radius: 100px;
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--m3-blue);
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.1s ease;
+    }
+
+    .btn-open-outlined:hover {
+      background-color: var(--surface-tonal);
+      border-color: var(--m3-blue);
+    }
+
+    .card-actions-row {
+      display: flex;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .btn-focus {
+      flex: 1;
+      height: 38px;
+      border-radius: 100px;
+      border: none;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+      transition: background-color 0.15s ease;
+    }
+
+    .btn-focus:hover {
+      background: var(--btn-primary-hover);
+    }
+
+    .btn-close-instance {
+      height: 38px;
+      padding: 0 12px;
+      border-radius: 100px;
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 12.5px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-close-instance:hover {
+      background-color: var(--m3-red-container);
+      color: var(--m3-red);
+      border-color: var(--m3-red);
+    }
+
+    /* Add Card */
+    .profile-card.add-card {
+      border: 1.5px dashed var(--border-color);
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .profile-card.add-card:hover {
+      border-color: var(--btn-primary-bg);
+      background-color: var(--surface-hover);
+      box-shadow: none;
+    }
+
+    .add-icon-circle {
+      width: 74px;
+      height: 74px;
+      border-radius: 50%;
+      background: var(--surface-container);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .profile-card.add-card:hover .add-icon-circle {
+      background-color: var(--surface-tonal);
+      color: var(--m3-blue);
+    }
+
+    /* Footer Actions */
+    .footer-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .m3-filled-btn {
+      height: 44px;
+      padding: 0 28px;
+      border-radius: 100px;
+      border: none;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+      transition: background-color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .m3-filled-btn:hover {
+      background: var(--btn-primary-hover);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.25);
+    }
+
+    .m3-outlined-btn {
+      height: 40px;
+      padding: 0 20px;
+      border-radius: 100px;
+      border: 1px solid var(--border-color);
+      background: transparent;
+      color: var(--m3-blue);
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .m3-outlined-btn:hover {
+      background-color: var(--surface-hover);
+      border-color: var(--m3-blue);
+    }
+
+    .footer-link-btn {
+      background: none;
+      border: none;
+      color: var(--m3-blue);
+      font-size: 12.5px;
+      font-weight: 500;
+      cursor: pointer;
+      padding: 4px 8px;
+      border-radius: 6px;
+      transition: background-color 0.15s ease;
+    }
+
+    .footer-link-btn:hover {
+      background-color: var(--surface-hover);
+      text-decoration: underline;
+    }
+
+    /* ======================================================== */
+    /* MODAL ARCHITECTURE (Google Material 3)                   */
+    /* ======================================================== */
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(32, 33, 36, 0.45);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 0.2s cubic-bezier(0.2, 0, 0, 1);
+    }
+
+    .modal-overlay.open {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background-color: var(--modal-bg);
+      border-radius: 28px;
+      width: 90%;
+      max-width: 480px;
+      padding: 28px 28px 24px 28px;
+      box-shadow: var(--modal-shadow);
+      border: 1px solid var(--border-subtle);
+      transform: scale(0.96);
+      transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1);
+      position: relative;
+    }
+
+    .modal-overlay.open .modal-content {
+      transform: scale(1);
+    }
+
+    .modal-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .modal-title {
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .modal-close-icon-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .modal-close-icon-btn:hover {
+      background-color: var(--surface-hover);
+      color: var(--text-primary);
+    }
+
+    .modal-desc {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.45;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+    }
+
+    .m3-input {
+      width: 100%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: 1px solid var(--border-color);
+      background: var(--surface-card);
+      color: var(--text-primary);
+      font-size: 14px;
+      outline: none;
+      transition: border-color 0.15s ease;
+    }
+
+    .m3-input:focus {
+      border-color: var(--m3-blue);
+      border-width: 2px;
+      padding: 11px 15px;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-top: 24px;
+    }
+
+    /* ======================================================== */
+    /* GOOGLE ACCOUNT SWITCHER & MANAGER MODAL                  */
+    /* ======================================================== */
+    .google-account-modal-content {
+      max-width: 460px;
+      padding: 24px 24px 24px 24px;
+      border-radius: 28px;
+      max-height: 88vh;
+      overflow-y: auto;
+    }
+
+    .g-account-top {
+      position: sticky;
+      top: -24px;
+      background: var(--modal-bg);
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4px 0 12px 0;
+      margin-bottom: 12px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .g-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text-secondary);
+    }
+
+    .g-identity-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 10px 16px 16px 16px;
+    }
+
+    .g-identity-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background-color: #9c27b0;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      font-weight: 500;
+      border: 3px solid var(--m3-blue);
+      margin-bottom: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+
+    .g-identity-name {
+      font-size: 17px;
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+
+    .g-identity-email {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      font-family: Roboto, sans-serif;
+    }
+
+    .g-active-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--m3-green);
+      background-color: var(--m3-green-bg);
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    .g-divider {
+      height: 1px;
+      background-color: var(--divider-color);
+      width: 100%;
+      margin: 16px 0;
+    }
+
+    .g-section-header {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    /* Accounts List inside Google Popover */
+    .g-accounts-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .g-account-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 12px;
+      border-radius: 16px;
+      border: 1px solid var(--border-subtle);
+      background: var(--surface-card);
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .g-account-row:hover {
+      background-color: var(--surface-hover);
+      border-color: var(--border-color);
+    }
+
+    .g-account-row.is-active-row {
+      background-color: rgba(26, 115, 232, 0.04);
+      border-color: var(--m3-blue);
+    }
+
+    .g-account-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      overflow: hidden;
+      flex: 1;
+    }
+
+    .g-account-row-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--m3-blue);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .g-account-row-info {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .g-account-row-email {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-primary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-family: Roboto, sans-serif;
+    }
+
+    .g-account-row-status {
+      font-size: 11px;
+      color: var(--text-secondary);
+    }
+
+    .g-account-right-actions {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-shrink: 0;
+    }
+
+    .g-btn-switch {
+      padding: 6px 14px;
+      border-radius: 100px;
+      border: 1px solid var(--border-color);
+      background: var(--surface-card);
+      color: var(--m3-blue);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .g-btn-switch:hover {
+      background-color: var(--surface-tonal);
+      border-color: var(--m3-blue);
+    }
+
+    .g-btn-remove-account {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: none;
+      background: transparent;
+      color: var(--text-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color 0.15s ease, color 0.15s ease;
+    }
+
+    .g-btn-remove-account:hover {
+      background-color: var(--m3-red-container);
+      color: var(--m3-red);
+    }
+
+    .g-account-active-tag {
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--m3-green);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 8px;
+    }
+
+    /* Add Account Button in Google Popover */
+    .g-btn-add-account {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 14px;
+      border: 1px dashed var(--border-color);
+      background: transparent;
+      color: var(--text-primary);
+      font-size: 13.5px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .g-btn-add-account:hover {
+      background-color: var(--surface-hover);
+      border-color: var(--m3-blue);
+      color: var(--m3-blue);
+    }
+
+    .g-add-icon-box {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: var(--surface-container);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+    }
+
+    .g-btn-add-account:hover .g-add-icon-box {
+      background-color: var(--surface-tonal);
+      color: var(--m3-blue);
+    }
+
+    /* Expandable Add Account Actions */
+    .g-add-actions-container {
+      margin-top: 12px;
+      padding: 14px;
+      border-radius: 16px;
+      background: var(--surface-container);
+      display: none;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .g-add-actions-container.open {
+      display: flex;
+    }
+
+    .g-action-primary-btn {
+      height: 38px;
+      border-radius: 100px;
+      border: none;
+      background: var(--btn-primary-bg);
+      color: var(--btn-primary-text);
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background-color 0.15s ease;
+    }
+
+    .g-action-primary-btn:hover {
+      background: var(--btn-primary-hover);
+    }
+
+    .g-action-secondary-btn {
+      height: 36px;
+      border-radius: 100px;
+      border: 1px solid var(--border-color);
+      background: var(--surface-card);
+      color: var(--text-primary);
+      font-size: 12.5px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: background-color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .g-action-secondary-btn:hover {
+      background: var(--surface-hover);
+      border-color: var(--border-color);
+    }
+
+    /* Active Listening Box */
+    .g-signin-listening-box {
+      display: none;
+      flex-direction: column;
+      gap: 10px;
+      padding: 14px;
+      background: rgba(26, 115, 232, 0.08);
+      border: 1px solid var(--m3-blue);
+      border-radius: 14px;
+    }
+
+    .g-signin-listening-box.active {
+      display: flex;
+    }
+
+    .g-listening-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+
+    .g-pulsing-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background-color: var(--m3-blue);
+      box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.7);
+      animation: pulse-blue 1.5s infinite;
+      flex-shrink: 0;
+    }
+
+    @keyframes pulse-blue {
+      0% { box-shadow: 0 0 0 0 rgba(26, 115, 232, 0.7); }
+      70% { box-shadow: 0 0 0 8px rgba(26, 115, 232, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(26, 115, 232, 0); }
+    }
+
+    .g-listening-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .g-signin-success-banner {
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: var(--m3-green-bg);
+      color: var(--m3-green);
+      font-size: 12.5px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Switch Notice Banner */
+    .g-switch-banner {
+      display: none;
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 14px;
+      background: rgba(26, 115, 232, 0.08);
+      border: 1px solid rgba(26, 115, 232, 0.3);
+    }
+
+    /* ======================================================== */
+    /* SETTINGS MODAL (Preferences & Customization)             */
+    /* ======================================================== */
+    .settings-modal-content {
+      max-width: 520px;
+      max-height: 85vh;
+      overflow-y: auto;
+    }
+
+    .settings-section {
+      margin-bottom: 22px;
+    }
+
+    .settings-section-title {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 10px;
+    }
+
+    .settings-card {
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 14px 16px;
+      background: var(--surface-card);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 8px;
+    }
+
+    .settings-card-info {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .settings-card-title {
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+
+    .settings-card-desc {
+      font-size: 12px;
+      color: var(--text-secondary);
+      line-height: 1.35;
+    }
+
+    /* Segmented Theme Picker */
+    .theme-segmented-control {
+      display: flex;
+      background-color: var(--surface-container);
+      border-radius: 100px;
+      padding: 3px;
+      gap: 2px;
+    }
+
+    .theme-segment-btn {
+      padding: 5px 12px;
+      border-radius: 100px;
+      border: none;
+      background: transparent;
+      color: var(--text-secondary);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      transition: background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .theme-segment-btn.active {
+      background-color: var(--surface-card);
+      color: var(--btn-primary-bg);
+      font-weight: 600;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+    }
+
+    /* Toggle Switch */
+    .m3-switch {
+      position: relative;
+      display: inline-block;
+      width: 44px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .m3-switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+
+    .switch-slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: var(--border-color);
+      border-radius: 24px;
+      transition: background-color 0.2s ease;
+    }
+
+    .switch-slider:before {
+      position: absolute;
+      content: "";
+      height: 18px;
+      width: 18px;
+      left: 3px;
+      bottom: 3px;
+      background-color: #ffffff;
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.25);
+      transition: transform 0.2s ease;
+    }
+
+    .m3-switch input:checked + .switch-slider {
+      background-color: var(--btn-primary-bg);
+    }
+
+    .m3-switch input:checked + .switch-slider:before {
+      transform: translateX(20px);
+    }
+
+    /* Small Action Buttons in Settings */
+    .btn-action-small {
+      height: 32px;
+      padding: 0 14px;
+      border-radius: 100px;
+      border: 1px solid var(--border-color);
+      background: var(--surface-container);
+      color: var(--text-primary);
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+    }
+
+    .btn-action-small:hover {
+      background-color: var(--surface-hover);
+      border-color: var(--btn-primary-bg);
+      color: var(--btn-primary-bg);
+    }
+
+    /* Danger Button */
+    .btn-danger-filled {
+      background-color: var(--m3-red);
+      color: #ffffff;
+      border: none;
+      height: 38px;
+      padding: 0 20px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background-color 0.15s ease;
+    }
+
+    .btn-danger-filled:hover {
+      background-color: var(--m3-red-hover);
+    }
+
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #202124;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 2000;
+      opacity: 0;
+      transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1), opacity 0.25s cubic-bezier(0.2, 0, 0, 1);
+      pointer-events: none;
+    }
+
+    .toast-container.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Google 4-Color Accent Strip -->
+  <div class="google-color-bar"></div>
+
+  <div id="main-container" class="main-wrapper">
+    <!-- Header Area -->
+    <div class="header-area">
+      <div class="header-top-bar">
+        <button onclick="openSettingsModal()" class="icon-button" title="Settings & Customization">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+          </svg>
+        </button>
+      </div>
+
+      <div class="google-logo-wrapper">
+        <svg width="42" height="42" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+        </svg>
+      </div>
+      <h1>Who's using Antigravity?</h1>
+      <p class="subtitle">Choose a workspace profile, switch accounts, or launch simultaneously</p>
+    </div>
+
+    <!-- Profiles Grid -->
+    <div id="profiles-grid" class="profiles-grid">
+      <!-- Injected dynamically -->
+    </div>
+
+    <!-- Bottom Actions -->
+    <div class="footer-actions">
+      <div>
+        <button onclick="launchBothSimultaneously()" class="m3-filled-btn" title="Run Personal and Company together in separate windows">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="2" y="3" width="9" height="18" rx="2"></rect>
+            <rect x="13" y="3" width="9" height="18" rx="2"></rect>
+          </svg>
+          Launch Both Simultaneously
+        </button>
+      </div>
+
+      <div>
+        <button onclick="launchIDEForActive()" class="footer-link-btn">Open in Antigravity IDE</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: GOOGLE ACCOUNTS CHOOSER & REMOVER                 -->
+  <!-- ======================================================== -->
+  <div id="google-account-modal" class="modal-overlay" onclick="if(event.target===this)closeGoogleAccountModal()">
+    <div class="modal-content google-account-modal-content">
+      <div class="g-account-top">
+        <div class="g-brand">
+          <svg width="20" height="20" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          Google Accounts Manager
+        </div>
+        <button class="modal-close-icon-btn" onclick="closeGoogleAccountModal()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Identity Header -->
+      <div class="g-identity-card">
+        <div id="g-modal-avatar" class="g-identity-avatar">M</div>
+        <div class="g-identity-name">Personal Workspace</div>
+        <div id="g-modal-email" class="g-identity-email">madanlabidyasar.mo@gmail.com</div>
+        <div class="g-active-badge">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor">
+            <circle cx="12" cy="12" r="8"></circle>
+          </svg>
+          Active in Antigravity
+        </div>
+      </div>
+
+      <div class="g-divider"></div>
+
+      <!-- Accounts Section -->
+      <div class="g-section-header">Manage Accounts in Pool</div>
+      <div id="g-modal-accounts-list" class="g-accounts-list">
+        <!-- Injected dynamically -->
+      </div>
+
+      <!-- Switch Notice Banner -->
+      <div id="g-switch-restart-banner" class="g-switch-banner">
+        <div id="g-switch-restart-text" style="font-size:12.5px; font-weight:500; color:var(--text-primary); line-height:1.45;"></div>
+        <button onclick="postBridge('restartAntigravity')" class="m3-filled-btn" style="height:34px; font-size:12px; margin-top:10px; width:100%;">
+          ↺ Reload / Relaunch Antigravity
+        </button>
+      </div>
+
+      <div class="g-divider"></div>
+
+      <!-- Add Account Row -->
+      <button class="g-btn-add-account" onclick="toggleAddAccountActions()">
+        <div class="g-add-icon-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="12" y1="5" x2="12" y2="19"></line>
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+          </svg>
+        </div>
+        <span>Link another Google account to pool</span>
+      </button>
+
+      <!-- Expandable Add Account Actions -->
+      <div id="g-add-actions-container" class="g-add-actions-container">
+        <div style="font-size: 12px; color: var(--text-secondary); line-height: 1.4;">
+          Your current account and all your chats are safe and backed up. You do not need to log out of your browser.
+        </div>
+        
+        <div id="g-signin-buttons-row" style="display:flex; flex-direction:column; gap:8px;">
+          <button class="g-action-primary-btn" onclick="triggerSignInAction()">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path>
+              <polyline points="10 17 15 12 10 7"></polyline>
+              <line x1="15" y1="12" x2="3" y2="12"></line>
+            </svg>
+            Trigger Sign-In for New Account
+          </button>
+
+          <button class="g-action-secondary-btn" onclick="saveCurrentAccountToPool()">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="23 4 23 10 17 10"></polyline>
+              <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+            </svg>
+            Snapshot & Link Current Login
+          </button>
+        </div>
+
+        <!-- Listening Box -->
+        <div id="g-signin-listening" class="g-signin-listening-box">
+          <div class="g-listening-header">
+            <span class="g-pulsing-dot"></span>
+            <span>Sign-In Window Active</span>
+          </div>
+          <p class="g-listening-desc">
+            An Antigravity sign-in window has opened. Complete "Sign in with Google" in that window. The Switcher will capture and link it automatically.
+          </p>
+          <div style="display:flex; gap:8px; margin-top:4px;">
+            <button class="g-action-secondary-btn" style="flex:1;" onclick="saveCurrentAccountToPool()">Detect Now</button>
+            <button class="g-action-secondary-btn" style="flex:1; border-color:var(--border-color);" onclick="cancelSignInAction()">Cancel</button>
+          </div>
+        </div>
+
+        <div id="g-signin-success-msg" style="display:none;" class="g-signin-success-banner"></div>
+      </div>
+
+      <div class="modal-actions" style="margin-top: 20px;">
+        <button onclick="closeGoogleAccountModal()" class="m3-filled-btn" style="height: 36px; padding: 0 24px; font-size: 13px;">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: CONFIRM REMOVE GOOGLE ACCOUNT                     -->
+  <!-- ======================================================== -->
+  <div id="remove-account-modal" class="modal-overlay" onclick="if(event.target===this)closeRemoveAccountModal()">
+    <div class="modal-content">
+      <div class="modal-header-row">
+        <h2 class="modal-title" style="color: var(--m3-red);">Remove Google Account?</h2>
+        <button class="modal-close-icon-btn" onclick="closeRemoveAccountModal()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <p class="modal-desc" id="remove-account-desc">
+        Are you sure you want to remove this account from the switcher pool? Its saved tokens on this device will be deleted. Your Google account online and other profiles will remain untouched.
+      </p>
+
+      <div class="modal-actions">
+        <button onclick="closeRemoveAccountModal()" class="m3-outlined-btn" style="height: 36px; padding: 0 18px; font-size: 13px;">Cancel</button>
+        <button onclick="executeRemoveAccount()" class="btn-danger-filled">Remove Account</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: SETTINGS & CUSTOMIZATION                          -->
+  <!-- ======================================================== -->
+  <div id="settings-modal" class="modal-overlay" onclick="if(event.target===this)closeSettingsModal()">
+    <div class="modal-content settings-modal-content">
+      <div class="modal-header-row">
+        <h2 class="modal-title">Settings & Customization</h2>
+        <button class="modal-close-icon-btn" onclick="closeSettingsModal()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <p class="modal-desc">Customize theme appearance, switching behavior, and system maintenance.</p>
+
+      <!-- Section: Appearance -->
+      <div class="settings-section">
+        <div class="settings-section-title">Appearance & Theme</div>
+        <div class="settings-card">
+          <div class="settings-card-info">
+            <div class="settings-card-title">Theme Mode</div>
+            <div class="settings-card-desc">Choose your preferred visual appearance</div>
+          </div>
+          <div class="theme-segmented-control">
+            <button class="theme-segment-btn" id="theme-btn-system" onclick="setTheme('system')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              Auto
+            </button>
+            <button class="theme-segment-btn" id="theme-btn-light" onclick="setTheme('light')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+              Light
+            </button>
+            <button class="theme-segment-btn" id="theme-btn-dark" onclick="setTheme('dark')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              Dark
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section: Switching Behavior -->
+      <div class="settings-section">
+        <div class="settings-section-title">Switching Behavior</div>
+        
+        <div class="settings-card">
+          <div class="settings-card-info">
+            <div class="settings-card-title">Auto-Relaunch on Switch</div>
+            <div class="settings-card-desc">Automatically restart Antigravity when switching Google accounts so changes take effect instantly</div>
+          </div>
+          <label class="m3-switch">
+            <input type="checkbox" id="auto-relaunch-toggle" checked onchange="toggleAutoRelaunch(this)">
+            <span class="switch-slider"></span>
+          </label>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-card-info">
+            <div class="settings-card-title">Automatic Quota Failover</div>
+            <div class="settings-card-desc">Auto-switch to backup account if active account encounters rate limits (HTTP 429)</div>
+          </div>
+          <label class="m3-switch">
+            <input type="checkbox" id="auto-failover-toggle" checked onchange="onAutoFailoverToggle(this)">
+            <span class="switch-slider"></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Section: Maintenance & System -->
+      <div class="settings-section">
+        <div class="settings-section-title">Maintenance & System</div>
+        
+        <div class="settings-card">
+          <div class="settings-card-info">
+            <div class="settings-card-title">macOS Keychain Sync</div>
+            <div class="settings-card-desc">Ensure Go language server credentials match the active account in macOS Keychain</div>
+          </div>
+          <button id="btn-sync-keychain" onclick="resyncKeychainAction()" class="btn-action-small">Sync Now</button>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-card-info">
+            <div class="settings-card-title">Clear Update & Temp Caches</div>
+            <div class="settings-card-desc">Remove stale update zip files and ShipIt cache to prevent auto-update restart prompts</div>
+          </div>
+          <button id="btn-clean-caches" onclick="cleanCachesAction()" class="btn-action-small">Clean Caches</button>
+        </div>
+      </div>
+
+      <!-- Section: Workspace Profiles -->
+      <div class="settings-section">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+          <div class="settings-section-title" style="margin-bottom:0;">Workspace Profiles</div>
+          <button onclick="closeSettingsModal(); openAddProfileModal('clean');" style="background:none; border:none; color:var(--m3-blue); font-size:12.5px; font-weight:500; cursor:pointer;">+ Add Profile</button>
+        </div>
+        <div id="settings-profiles-list" style="display:flex; flex-direction:column; gap:8px;">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button onclick="closeSettingsModal()" class="m3-filled-btn" style="height: 36px; padding: 0 24px; font-size: 13px;">Done</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: ADD NEW WORKSPACE PROFILE                         -->
+  <!-- ======================================================== -->
+  <div id="add-modal" class="modal-overlay" onclick="if(event.target===this)closeAddProfileModal()">
+    <div class="modal-content">
+      <div class="modal-header-row">
+        <h2 class="modal-title">Add Workspace Profile</h2>
+        <button class="modal-close-icon-btn" onclick="closeAddProfileModal()">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <p class="modal-desc">Set up a new workspace profile with your choice of conversation isolation.</p>
+
+      <div class="form-group">
+        <label class="form-label" for="profile-name-input">Profile Name</label>
+        <input id="profile-name-input" type="text" class="m3-input" placeholder="e.g. Work 2, Client X, Staging" autofocus>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Conversations & Projects Mode</label>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <label style="display:flex; align-items:flex-start; gap:10px; padding:12px; border-radius:12px; border:1px solid var(--border-subtle); cursor:pointer;">
+            <input type="radio" name="conversations-mode" value="clean" checked style="margin-top:3px; accent-color:var(--m3-blue);">
+            <div>
+              <div style="font-size:13.5px; font-weight:500; color:var(--text-primary);">Clean & Isolated (Recommended)</div>
+              <div style="font-size:12px; color:var(--text-secondary); line-height:1.35;">Starts with an empty workspace. Keeps this profile's history separate.</div>
+            </div>
+          </label>
+          <label style="display:flex; align-items:flex-start; gap:10px; padding:12px; border-radius:12px; border:1px solid var(--border-subtle); cursor:pointer;">
+            <input type="radio" name="conversations-mode" value="clone" style="margin-top:3px; accent-color:var(--m3-blue);">
+            <div>
+              <div style="font-size:13.5px; font-weight:500; color:var(--text-primary);">Clone from Personal</div>
+              <div style="font-size:12px; color:var(--text-secondary); line-height:1.35;">Copies existing conversations and projects from Personal into an independent branch.</div>
+            </div>
+          </label>
+        </div>
+      </div>
+
+      <div class="modal-actions">
+        <button onclick="closeAddProfileModal()" class="m3-outlined-btn" style="height: 36px; padding: 0 18px; font-size: 13px;">Cancel</button>
+        <button onclick="submitNewProfile()" class="m3-filled-btn" style="height: 36px; padding: 0 22px; font-size: 13px;">Create & Open</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Bar -->
+  <div id="toast" class="toast-container">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+    <span id="toast-text">Action completed</span>
+  </div>
+
+  <script>
+    // Robust In-Memory + LocalStorage Safe Storage helper
+    const SafeStorage = {
+      get(key, fallback = null) {
+        try {
+          if (typeof window !== 'undefined' && window.localStorage) {
+            const v = window.localStorage.getItem(key);
+            if (v !== null) return v;
+          }
+        } catch (e) {
+          console.warn('SafeStorage get failed:', e);
+        }
+        return window[`__mem_${key}`] !== undefined ? window[`__mem_${key}`] : fallback;
+      },
+      set(key, val) {
+        try {
+          if (typeof window !== 'undefined' && window.localStorage) {
+            window.localStorage.setItem(key, val);
+          }
+        } catch (e) {
+          console.warn('SafeStorage set failed:', e);
+        }
+        window[`__mem_${key}`] = val;
+      }
+    };
+
+    // Theme Management
+    function applySavedTheme() {
+      try {
+        const saved = SafeStorage.get('agy_theme', 'system');
+        const root = document.documentElement;
+        
+        document.querySelectorAll('.theme-segment-btn').forEach(b => b.classList.remove('active'));
+        const activeBtn = document.getElementById(`theme-btn-${saved}`);
+        if (activeBtn) activeBtn.classList.add('active');
+
+        if (saved === 'system') {
+          root.removeAttribute('data-theme');
+          document.body.removeAttribute('data-theme');
+        } else {
+          root.setAttribute('data-theme', saved);
+          document.body.setAttribute('data-theme', saved);
+        }
+        
+        postBridge('setTheme', { theme: saved });
+      } catch (e) {
+        console.error('Error applying theme:', e);
+      }
+    }
+
+    function setTheme(theme) {
+      SafeStorage.set('agy_theme', theme);
+      applySavedTheme();
+      showToast(`Theme set to ${theme.toUpperCase()}`);
+    }
+
+    // Auto Relaunch Preference
+    function getAutoRelaunchPreference() {
+      try {
+        const val = SafeStorage.get('agy_auto_relaunch');
+        return val === null ? true : (val === 'true');
+      } catch (e) {
+        return true;
+      }
+    }
+
+    function toggleAutoRelaunch(el) {
+      SafeStorage.set('agy_auto_relaunch', el.checked ? 'true' : 'false');
+      showToast(el.checked ? 'Auto-relaunch enabled on switch' : 'Auto-relaunch disabled');
+    }
+
+    // Toast helper
+    function showToast(msg) {
+      try {
+        const t = document.getElementById('toast');
+        const text = document.getElementById('toast-text');
+        text.textContent = msg;
+        t.classList.add('show');
+        setTimeout(() => {
+          t.classList.remove('show');
+        }, 2600);
+      } catch (e) {}
+    }
+
+    // Profiles Data
+    let profiles = [
+      {
+        name: 'personal',
+        label: 'Personal',
+        email: 'user@example.com',
+        running: false,
+        color: '#9c27b0',
+        initial: 'P',
+        isPrimary: true,
+        mode: 'primary',
+        accounts: [],
+        activeAccount: 'user@example.com'
+      },
+      {
+        name: 'company',
+        label: 'Company',
+        email: 'work@example.com',
+        running: false,
+        color: '#1a73e8',
+        initial: 'C',
+        isPrimary: false,
+        mode: 'clean'
+      }
+    ];
+
+    let pendingRemoveAccountEmail = null;
+
+    // Bridge Calls
+    function postBridge(action, data = {}) {
+      if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.switcher) {
+        window.webkit.messageHandlers.switcher.postMessage({ action, ...data });
+      } else {
+        console.log('[Native Bridge Call]', action, data);
+      }
+    }
+
+    function render() {
+      const grid = document.getElementById('profiles-grid');
+      grid.innerHTML = '';
+
+      profiles.forEach(p => {
+        const card = document.createElement('div');
+        const isPersonal = (p.name === 'personal');
+        const displayName = isPersonal ? 'Personal' : (p.name === 'company' ? 'Company' : (p.label || p.name));
+        const initial = p.initial || (p.label ? p.label[0].toUpperCase() : p.name[0].toUpperCase());
+        const color = p.color || (isPersonal ? '#9c27b0' : '#1a73e8');
+        const activeEmail = isPersonal ? (p.activeAccount || p.email) : p.email;
+
+        card.className = `profile-card ${p.running ? 'active-session' : ''}`;
+        card.onclick = (e) => {
+          if (!e.target.closest('button') && !e.target.closest('.google-account-pill')) {
+            launch(p.name);
+          }
+        };
+
+        card.innerHTML = `
+          ${p.running ? '<div class="active-dot-indicator" title="Active session"></div>' : ''}
+
+          ${!isPersonal ? `
+            <button class="card-delete-btn" onclick="event.stopPropagation(); confirmDeleteProfile('${p.name}', '${displayName}')" title="Delete Profile">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="3 6 5 6 21 6"></polyline>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
+            </button>
+          ` : ''}
+
+          <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+            <div class="avatar-wrapper">
+              <div class="avatar-circle" style="background-color: ${color};">
+                ${initial}
+              </div>
+              <div class="google-badge">
+                <svg viewBox="0 0 24 24">
+                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="profile-name">${displayName}</div>
+
+            ${isPersonal ? `
+              <button class="google-account-pill" onclick="event.stopPropagation(); openGoogleAccountModal()" title="Manage & switch accounts">
+                <span class="pill-email" title="${activeEmail}">${activeEmail}</span>
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M6 9l6 6 6-6"/>
+                </svg>
+              </button>
+            ` : `
+              <div class="profile-email-text" title="${activeEmail}">${activeEmail}</div>
+            `}
+          </div>
+
+          <div class="status-area">
+            ${p.running ? `
+              <div class="card-actions-row">
+                <button class="btn-focus" onclick="launch('${p.name}')">Focus</button>
+                <button class="btn-close-instance" onclick="stopProfile('${p.name}')" title="Close Antigravity">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                  </svg>
+                  Close
+                </button>
+              </div>
+            ` : `
+              <button class="btn-open-outlined" onclick="launch('${p.name}')">Open</button>
+            `}
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+
+      // Add Profile Card
+      const addCard = document.createElement('div');
+      addCard.className = 'profile-card add-card';
+      addCard.onclick = () => openAddProfileModal('clean');
+      addCard.innerHTML = `
+        <div style="display:flex; flex-direction:column; align-items:center; width:100%;">
+          <div class="add-icon-circle">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="12" y1="5" x2="12" y2="19"></line>
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+            </svg>
+          </div>
+          <div class="profile-name">Add Profile</div>
+          <div class="profile-email-text">Work or clean slate</div>
+        </div>
+        <div class="status-area">
+          <button class="btn-open-outlined" onclick="openAddProfileModal('clean')">Add</button>
+        </div>
+      `;
+      grid.appendChild(addCard);
+    }
+
+    function launch(name) {
+      postBridge('launch', { name, ide: false });
+      const p = profiles.find(x => x.name === name);
+      if (p) {
+        p.running = true;
+        render();
+      }
+    }
+
+    function stopProfile(name) {
+      postBridge('stop', { name });
+      const p = profiles.find(x => x.name === name);
+      if (p) {
+        p.running = false;
+        render();
+      }
+    }
+
+    function launchBothSimultaneously() {
+      postBridge('launchBoth', { p1: 'personal', p2: 'company' });
+      profiles.forEach(p => p.running = true);
+      render();
+    }
+
+    function launchIDEForActive() {
+      postBridge('launch', { name: 'company', ide: true });
+    }
+
+    // Google Accounts Modal Logic
+    function openGoogleAccountModal() {
+      document.body.classList.add('modal-open');
+      const modal = document.getElementById('google-account-modal');
+      modal.classList.add('open');
+      updateModalState();
+
+      const personal = profiles.find(p => p.name === 'personal') || {};
+      const activeEmail = personal.activeAccount || personal.email || '';
+      const accounts = (personal.accounts && personal.accounts.length > 0) ? personal.accounts : (activeEmail ? [activeEmail] : []);
+
+      document.getElementById('g-modal-email').textContent = activeEmail;
+      document.getElementById('g-modal-avatar').textContent = (activeEmail[0] || 'G').toUpperCase();
+
+      const list = document.getElementById('g-modal-accounts-list');
+      list.innerHTML = '';
+
+      accounts.forEach(acc => {
+        const isActive = (acc.toLowerCase() === activeEmail.toLowerCase());
+        const row = document.createElement('div');
+        row.className = `g-account-row ${isActive ? 'is-active-row' : ''}`;
+        
+        row.innerHTML = `
+          <div class="g-account-left">
+            <div class="g-account-row-avatar">${(acc[0] || 'G').toUpperCase()}</div>
+            <div class="g-account-row-info">
+              <div class="g-account-row-email" title="${acc}">${acc}</div>
+              <div class="g-account-row-status">${isActive ? 'Active identity' : 'Standby account'}</div>
+            </div>
+          </div>
+          <div class="g-account-right-actions">
+            ${isActive ? `
+              <div class="g-account-active-tag">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+                Active
+              </div>
+            ` : `
+              <button class="g-btn-switch" onclick="switchPersonalAccount('${acc}')">Switch</button>
+              <button class="g-btn-remove-account" title="Remove account from switcher" onclick="confirmRemoveAccount('${acc}')">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="3 6 5 6 21 6"></polyline>
+                  <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                </svg>
+              </button>
+            `}
+          </div>
+        `;
+        list.appendChild(row);
+      });
+    }
+
+    function closeGoogleAccountModal() {
+      document.getElementById('google-account-modal').classList.remove('open');
+      document.getElementById('g-add-actions-container').classList.remove('open');
+      const banner = document.getElementById('g-switch-restart-banner');
+      if (banner) banner.style.display = 'none';
+      if (!document.getElementById('remove-account-modal').classList.contains('open') &&
+          !document.getElementById('settings-modal').classList.contains('open') &&
+          !document.getElementById('add-modal').classList.contains('open')) {
+        document.body.classList.remove('modal-open');
+      }
+      updateModalState();
+    }
+
+    function toggleAddAccountActions() {
+      const container = document.getElementById('g-add-actions-container');
+      container.classList.toggle('open');
+      if (container.classList.contains('open')) {
+        setTimeout(() => {
+          container.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 50);
+      }
+    }
+
+    function triggerSignInAction() {
+      postBridge('triggerSignIn');
+      const buttonsRow = document.getElementById('g-signin-buttons-row');
+      const listeningBox = document.getElementById('g-signin-listening');
+      if (buttonsRow) buttonsRow.style.display = 'none';
+      if (listeningBox) listeningBox.classList.add('active');
+    }
+
+    function cancelSignInAction() {
+      postBridge('cancelSignIn');
+      const buttonsRow = document.getElementById('g-signin-buttons-row');
+      const listeningBox = document.getElementById('g-signin-listening');
+      if (buttonsRow) buttonsRow.style.display = 'flex';
+      if (listeningBox) listeningBox.classList.remove('active');
+    }
+
+    function saveCurrentAccountToPool() {
+      postBridge('saveCurrentAccount');
+      toggleAddAccountActions();
+      showToast('Snapshot taken of current login');
+      closeGoogleAccountModal();
+    }
+
+    window.onSignInHelperComplete = function(email) {
+      const listeningBox = document.getElementById('g-signin-listening');
+      const successMsg = document.getElementById('g-signin-success-msg');
+      if (listeningBox) listeningBox.classList.remove('active');
+      if (successMsg) {
+        successMsg.textContent = `✓ Successfully linked ${email}!`;
+        successMsg.style.display = 'flex';
+      }
+      showToast(`Linked ${email} to pool`);
+      setTimeout(() => {
+        const buttonsRow = document.getElementById('g-signin-buttons-row');
+        if (buttonsRow) buttonsRow.style.display = 'flex';
+        if (successMsg) successMsg.style.display = 'none';
+        openGoogleAccountModal();
+      }, 1800);
+    };
+
+    function switchPersonalAccount(email) {
+      const autoRestart = getAutoRelaunchPreference();
+      postBridge('switchPersonalAccount', { email: email, autoRestart: autoRestart });
+      
+      const personal = profiles.find(p => p.name === 'personal');
+      if (personal) {
+        personal.activeAccount = email;
+        render();
+        openGoogleAccountModal();
+      }
+
+      showToast(`Switched active account to ${email}`);
+
+      if (!autoRestart) {
+        const banner = document.getElementById('g-switch-restart-banner');
+        const text = document.getElementById('g-switch-restart-text');
+        if (banner && text) {
+          text.innerHTML = `✓ Switched active credentials to <strong>${email}</strong>!<br><span style="font-weight:400; color:var(--text-secondary); font-size:12px;">Antigravity is currently open. Click below to reload windows with new identity:</span>`;
+          banner.style.display = 'block';
+        }
+      }
+    }
+
+    // Account Removal Dialog
+    function confirmRemoveAccount(email) {
+      pendingRemoveAccountEmail = email;
+      document.getElementById('remove-account-desc').textContent = 
+        `Are you sure you want to remove "${email}" from this device's Antigravity switcher? Its saved tokens will be deleted from the switcher pool. You can re-link it anytime.`;
+      document.body.classList.add('modal-open');
+      document.getElementById('remove-account-modal').classList.add('open');
+      updateModalState();
+    }
+
+    function closeRemoveAccountModal() {
+      document.getElementById('remove-account-modal').classList.remove('open');
+      pendingRemoveAccountEmail = null;
+      if (!document.getElementById('google-account-modal').classList.contains('open') &&
+          !document.getElementById('settings-modal').classList.contains('open')) {
+        document.body.classList.remove('modal-open');
+      }
+      updateModalState();
+    }
+
+    function executeRemoveAccount() {
+      if (!pendingRemoveAccountEmail) return;
+      const email = pendingRemoveAccountEmail;
+      postBridge('deletePersonalAccount', { email: email });
+
+      const personal = profiles.find(p => p.name === 'personal');
+      if (personal && personal.accounts) {
+        personal.accounts = personal.accounts.filter(a => a.toLowerCase() !== email.toLowerCase());
+      }
+      
+      closeRemoveAccountModal();
+      openGoogleAccountModal();
+      render();
+      showToast(`Removed ${email} from pool`);
+    }
+
+    // Settings Modal Logic
+    function openSettingsModal() {
+      const modal = document.getElementById('settings-modal');
+      if (modal) modal.classList.add('open');
+      document.body.classList.add('modal-open');
+      updateModalState();
+
+      try {
+        applySavedTheme();
+      } catch (e) {
+        console.error('applySavedTheme error:', e);
+      }
+      
+      try {
+        const toggle = document.getElementById('auto-relaunch-toggle');
+        if (toggle) toggle.checked = getAutoRelaunchPreference();
+      } catch (e) {
+        console.error('auto-relaunch toggle error:', e);
+      }
+
+      try {
+        const list = document.getElementById('settings-profiles-list');
+        if (list) {
+          list.innerHTML = '';
+          profiles.forEach(p => {
+            const isPersonal = (p.name === 'personal');
+            const displayName = isPersonal ? 'Personal' : (p.name === 'company' ? 'Company' : (p.label || p.name));
+            const initial = p.initial || (p.label ? p.label[0].toUpperCase() : p.name[0].toUpperCase());
+            const color = p.color || (isPersonal ? '#9c27b0' : '#1a73e8');
+
+            const item = document.createElement('div');
+            item.className = 'settings-card';
+            item.style.marginBottom = '6px';
+            item.innerHTML = `
+              <div style="display:flex; align-items:center; gap:12px;">
+                <div style="width:34px; height:34px; border-radius:50%; background-color:${color}; color:#fff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:500;">
+                  ${initial}
+                </div>
+                <div style="display:flex; flex-direction:column;">
+                  <span style="font-size:13.5px; font-weight:500; color:var(--text-primary);">${displayName}</span>
+                  <span style="font-size:11.5px; color:var(--text-secondary); font-family:Roboto,sans-serif;">${p.email || ''}</span>
+                </div>
+              </div>
+              <div>
+                ${isPersonal ? `
+                  <span style="font-size:11px; font-weight:500; color:var(--text-secondary); background:var(--surface-container); padding:4px 10px; border-radius:100px;">Primary • Protected</span>
+                ` : `
+                  <button onclick="confirmDeleteProfile('${p.name}', '${displayName}')" style="padding:4px 12px; border-radius:100px; border:1px solid var(--border-color); background:transparent; color:var(--m3-red); font-size:11.5px; cursor:pointer;">Delete</button>
+                `}
+              </div>
+            `;
+            list.appendChild(item);
+          });
+        }
+      } catch (e) {
+        console.error('settings profiles list error:', e);
+      }
+    }
+
+    function closeSettingsModal() {
+      document.getElementById('settings-modal').classList.remove('open');
+      if (!document.getElementById('google-account-modal').classList.contains('open') &&
+          !document.getElementById('add-modal').classList.contains('open') &&
+          !document.getElementById('remove-account-modal').classList.contains('open')) {
+        document.body.classList.remove('modal-open');
+      }
+      updateModalState();
+    }
+
+    function onAutoFailoverToggle(el) {
+      postBridge('toggleAutoFailover', { enabled: el.checked });
+      showToast(el.checked ? 'Auto quota failover enabled' : 'Auto quota failover disabled');
+    }
+
+    function resyncKeychainAction() {
+      const btn = document.getElementById('btn-sync-keychain');
+      btn.textContent = 'Syncing...';
+      postBridge('resyncKeychain');
+    }
+
+    window.onKeychainSynced = function() {
+      const btn = document.getElementById('btn-sync-keychain');
+      if (btn) btn.textContent = '✓ Synced';
+      showToast('Credentials synchronized to macOS Keychain');
+      setTimeout(() => { if (btn) btn.textContent = 'Sync Now'; }, 2500);
+    };
+
+    function cleanCachesAction() {
+      const btn = document.getElementById('btn-clean-caches');
+      btn.textContent = 'Cleaning...';
+      postBridge('cleanCaches');
+    }
+
+    window.onCachesCleaned = function() {
+      const btn = document.getElementById('btn-clean-caches');
+      if (btn) btn.textContent = '✓ Cleaned';
+      showToast('Update & temp caches cleared');
+      setTimeout(() => { if (btn) btn.textContent = 'Clean Caches'; }, 2500);
+    };
+
+    // Add Profile Modal
+    function openAddProfileModal(defaultMode = 'clean') {
+      document.body.classList.add('modal-open');
+      const modal = document.getElementById('add-modal');
+      modal.classList.add('open');
+      document.getElementById('profile-name-input').focus();
+      updateModalState();
+    }
+
+    function closeAddProfileModal() {
+      document.body.classList.remove('modal-open');
+      document.getElementById('add-modal').classList.remove('open');
+      document.getElementById('profile-name-input').value = '';
+      updateModalState();
+    }
+
+    function submitNewProfile() {
+      const input = document.getElementById('profile-name-input');
+      const val = input.value.trim();
+      if (!val) return;
+
+      const slug = val.toLowerCase().replace(/[^a-z0-9]/g, '-');
+      const mode = document.querySelector('input[name="conversations-mode"]:checked').value;
+
+      postBridge('createProfile', { name: slug, label: val, mode: mode });
+      closeAddProfileModal();
+      showToast(`Created profile "${val}"`);
+    }
+
+    function confirmDeleteProfile(name, label) {
+      if (confirm(`Are you sure you want to delete profile "${label}"? This will delete its isolated workspace.`)) {
+        postBridge('deleteProfile', { name: name });
+        profiles = profiles.filter(p => p.name !== name);
+        render();
+        showToast(`Deleted profile "${label}"`);
+      }
+    }
+
+    // Receive data from Swift
+    window.renderProfiles = function(data) {
+      if (data && data.length > 0) {
+        const json = JSON.stringify(data);
+        if (window._lastProfilesJson === json) return;
+        window._lastProfilesJson = json;
+        profiles = data;
+        render();
+        if (document.getElementById('google-account-modal').classList.contains('open')) {
+          openGoogleAccountModal();
+        }
+      }
+    };
+
+    window.addEventListener('DOMContentLoaded', () => {
+      applySavedTheme();
+      render();
+      postBridge('getProfiles');
+    });
+
+    // Window Dragging Support
+    document.addEventListener('mousedown', (e) => {
+      if (document.body.classList.contains('modal-open')) return;
+      if (e.target.closest('button') || e.target.closest('input') || e.target.closest('.profile-card') || e.target.closest('.google-account-pill')) {
+        return;
+      }
+      if (e.target.closest('.header-area') || e.target.classList.contains('main-wrapper') || e.target === document.body || e.target === document.documentElement) {
+        postBridge('startWindowDrag');
+      }
+    });
+
+    function updateModalState() {
+      const isOpen = document.body.classList.contains('modal-open');
+      postBridge('modalState', { open: isOpen });
+    }
+  </script>
+</body>
+</html>
