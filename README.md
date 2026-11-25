@@ -1,6 +1,23 @@
 # Antigravity Switcher
 
-A native macOS application and identity management utility for **Google Antigravity**. Switch between multiple personal Google accounts seamlessly, manage isolated workspaces (Personal vs Company / Work), and protect against quota rate limits (HTTP 429) with automatic failover.
+A native desktop application and identity management utility for **Google Antigravity**. Switch between multiple personal Google accounts seamlessly, manage isolated workspaces (Personal vs Company / Work), and protect against quota rate limits (HTTP 429) with automatic failover.
+
+<div align="center">
+
+[![GitHub Release](https://img.shields.io/github/v/release/Madan019/antigravity-switcher?style=for-the-badge&logo=github&color=0b57d0)](https://github.com/Madan019/antigravity-switcher/releases/latest)
+[![macOS](https://img.shields.io/badge/macOS-Apple%20Silicon%20%7C%20Intel-000000?style=for-the-badge&logo=apple)](https://github.com/Madan019/antigravity-switcher/releases/download/v2.0.0/Antigravity-Switcher-macOS.dmg)
+[![Windows](https://img.shields.io/badge/Windows-10%20%2F%2011-0078D6?style=for-the-badge&logo=windows)](https://github.com/Madan019/antigravity-switcher/releases/download/v2.0.0/Antigravity-Switcher-Windows.zip)
+[![Linux](https://img.shields.io/badge/Linux-Ubuntu%20%7C%20Debian%20%7C%20Arch-FCC624?style=for-the-badge&logo=linux&logoColor=black)](https://github.com/Madan019/antigravity-switcher/releases/download/v2.0.0/Antigravity-Switcher-Linux.tar.gz)
+
+### [⬇️ Download Latest Release (v2.0.0)](https://github.com/Madan019/antigravity-switcher/releases/latest)
+
+| Platform | Recommended Package | Alternate / Portable |
+| :--- | :--- | :--- |
+| ** macOS** | [**Antigravity-Switcher-macOS.dmg**](https://github.com/Madan019/antigravity-switcher/releases/download/v2.0.0/Antigravity-Switcher-macOS.dmg) (Drag & Drop) | [macOS .zip](https://github.com/Madan019/antigravity-switcher/releases/download/v2.0.0/Antigravity-Switcher-macOS.zip) |
+| **⊞ Windows** | [**Antigravity-Switcher-Windows.zip**](https://github.com/Madan019/antigravity-switcher/releases/download/v2.0.0/Antigravity-Switcher-Windows.zip) (Double-click `install.bat`) | Standalone `launch.bat` |
+| **🐧 Linux** | [**Antigravity-Switcher-Linux.tar.gz**](https://github.com/Madan019/antigravity-switcher/releases/download/v2.0.0/Antigravity-Switcher-Linux.tar.gz) (Run `./install.sh`) | `python3 switcher_gui.py` |
+
+</div>
 
 ---
 
@@ -38,31 +55,46 @@ A native macOS application and identity management utility for **Google Antigrav
 
 ```
 antigravity-switcher/
-├── AntigravitySwitcher.swift      # Native Swift AppKit wrapper & process manager
+├── AntigravitySwitcher.swift      # Native Swift AppKit wrapper & process manager (macOS)
+├── switcher_gui.py               # Cross-platform desktop GUI launcher (Windows & Linux)
 ├── account_switcher_core.py       # Core synchronization engine across 5 identity tiers
 ├── ui.html                       # Google M3 Webview UI (Accounts manager & Settings)
-├── build.sh                      # Shell script to compile Swift binary & build .app bundle
-├── install.sh                    # 1-click build, register, and launch script
-└── .gitignore                    # Git ignore file for macOS and build artifacts
+├── install.sh                    # 1-click build & install for macOS
+├── install.bat / install.ps1     # 1-click installer & shortcut creator for Windows
+├── install_linux.sh              # 1-click desktop integration for Linux
+├── launch.bat                    # Portable launcher for Windows
+├── package_release.sh            # Packages .dmg, .zip, and .tar.gz distribution archives
+└── .gitignore                    # Git ignore file
 ```
 
 ---
 
-## Build & Installation
+## Installation & Setup
 
-### Prerequisites
-- macOS 12.0 or later
-- Swift compiler (`swiftc`, included with Xcode or Command Line Tools: `xcode-select --install`)
-- Python 3 (`/usr/bin/python3`)
+###  macOS
+1. Download **[Antigravity-Switcher-macOS.dmg](https://github.com/Madan019/antigravity-switcher/releases/download/v2.0.0/Antigravity-Switcher-macOS.dmg)**.
+2. Open the disk image and drag **Antigravity Switcher.app** to your `Applications` folder.
+3. Launch from Spotlight (<kbd>⌘</kbd> + <kbd>Space</kbd> `Antigravity Switcher`) or Launchpad.
 
-### 1-Click Install
-Run the installation script from your terminal:
+*Build from source:*
 ```bash
-chmod +x build.sh install.sh
-./install.sh
+git clone https://github.com/Madan019/antigravity-switcher.git && cd antigravity-switcher
+chmod +x build.sh install.sh && ./install.sh
 ```
 
-This compiles `AntigravitySwitcher.swift`, bundles `ui.html` and `account_switcher_core.py`, creates `~/Applications/Antigravity Switcher.app`, and opens the app.
+### ⊞ Windows (10 & 11)
+1. Download and extract **[Antigravity-Switcher-Windows.zip](https://github.com/Madan019/antigravity-switcher/releases/download/v2.0.0/Antigravity-Switcher-Windows.zip)**.
+2. Double-click **`install.bat`** (or right-click `install.ps1` -> *Run with PowerShell*).
+3. The installer creates Start Menu and Desktop shortcuts and launches the app.
+
+### 🐧 Linux (Ubuntu, Debian, Fedora, Arch)
+1. Download and extract **[Antigravity-Switcher-Linux.tar.gz](https://github.com/Madan019/antigravity-switcher/releases/download/v2.0.0/Antigravity-Switcher-Linux.tar.gz)**:
+```bash
+tar -xzf Antigravity-Switcher-Linux.tar.gz
+cd antigravity-switcher
+chmod +x install.sh && ./install.sh
+```
+2. Launches directly and registers an Application Menu entry in your desktop environment.
 
 ---
 
