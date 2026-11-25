@@ -126,4 +126,4 @@ python3 account_switcher_core.py clean-caches
 
 ## Authors & Contribution
 
-Created by [Madanlal Bidiyasar](https://github.com/madanlal019). Contributions and improvements are welcome!
+Created by [Madanlal Bidiyasar](https://github.com/madan019). Contributions and improvements are welcome!
