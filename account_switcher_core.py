@@ -4,7 +4,14 @@ import os, sys, json, sqlite3, shutil, base64, subprocess
 HOME = os.path.expanduser('~')
 GEMINI_DIR = os.path.join(HOME, '.gemini')
 POOL_DIR = os.path.join(HOME, '.antigravity-profiles/personal-accounts')
-APP_SUPPORT_DIR = os.path.join(HOME, 'Library/Application Support/Antigravity')
+
+if sys.platform == 'darwin':
+    APP_SUPPORT_DIR = os.path.join(HOME, 'Library/Application Support/Antigravity')
+elif sys.platform == 'win32':
+    APP_SUPPORT_DIR = os.path.join(os.environ.get('APPDATA', os.path.join(HOME, 'AppData', 'Roaming')), 'Antigravity')
+else:
+    APP_SUPPORT_DIR = os.path.join(os.environ.get('XDG_CONFIG_HOME', os.path.join(HOME, '.config')), 'Antigravity')
+
 VSCDB_PATH = os.path.join(APP_SUPPORT_DIR, 'User/globalStorage/state.vscdb')
 APP_STORAGE_PATH = os.path.join(APP_SUPPORT_DIR, 'app_storage.json')
 
@@ -135,16 +142,17 @@ def switch_to(target_email):
                 print(f"Error copying {f}: {e}", file=sys.stderr)
                 
     # 2. Update macOS Keychain for language_server (go-keyring)
-    token_file = os.path.join(target_dir, 'jetski-standalone-oauth-token')
-    if os.path.isfile(token_file):
-        try:
-            with open(token_file) as f:
-                t_content = f.read().strip()
-            t_b64 = base64.b64encode(t_content.encode('utf-8')).decode('utf-8')
-            kc_val = f"go-keyring-base64:{t_b64}"
-            subprocess.run(['security', 'add-generic-password', '-a', 'antigravity', '-s', 'gemini', '-w', kc_val, '-U'], capture_output=True)
-        except Exception as e:
-            print(f"Error updating macOS Keychain: {e}", file=sys.stderr)
+    if sys.platform == 'darwin':
+        token_file = os.path.join(target_dir, 'jetski-standalone-oauth-token')
+        if os.path.isfile(token_file):
+            try:
+                with open(token_file) as f:
+                    t_content = f.read().strip()
+                t_b64 = base64.b64encode(t_content.encode('utf-8')).decode('utf-8')
+                kc_val = f"go-keyring-base64:{t_b64}"
+                subprocess.run(['security', 'add-generic-password', '-a', 'antigravity', '-s', 'gemini', '-w', kc_val, '-U'], capture_output=True)
+            except Exception as e:
+                print(f"Error updating macOS Keychain: {e}", file=sys.stderr)
                 
     # 2. Restore UI auth state
     ui_state_file = os.path.join(target_dir, 'ui_auth_state.json')
@@ -233,10 +241,19 @@ def delete_account(email):
         return False
 
 def clean_caches():
-    caches = [
-        os.path.join(HOME, 'Library/Caches/com.google.antigravity'),
-        os.path.join(HOME, 'Library/Caches/com.google.antigravity.ShipIt')
-    ]
+    if sys.platform == 'darwin':
+        caches = [
+            os.path.join(HOME, 'Library/Caches/com.google.antigravity'),
+            os.path.join(HOME, 'Library/Caches/com.google.antigravity.ShipIt')
+        ]
+    elif sys.platform == 'win32':
+        caches = [
+            os.path.join(os.environ.get('LOCALAPPDATA', os.path.join(HOME, 'AppData', 'Local')), 'Antigravity/Cache')
+        ]
+    else:
+        caches = [
+            os.path.join(os.environ.get('XDG_CACHE_HOME', os.path.join(HOME, '.cache')), 'antigravity')
+        ]
     cleaned = 0
     for c in caches:
         if os.path.isdir(c):
@@ -254,6 +271,9 @@ def clean_caches():
     return True
 
 def resync_keychain():
+    if sys.platform != 'darwin':
+        print("Keychain sync is only applicable on macOS.")
+        return True
     token_file = os.path.join(GEMINI_DIR, 'jetski-standalone-oauth-token')
     if os.path.isfile(token_file):
         try:

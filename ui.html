@@ -1760,7 +1760,17 @@
       if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.switcher) {
         window.webkit.messageHandlers.switcher.postMessage({ action, ...data });
       } else {
-        console.log('[Native Bridge Call]', action, data);
+        fetch('/api/bridge', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ action, ...data })
+        }).then(r => r.json()).then(res => {
+          if (res && res.eval) {
+            eval(res.eval);
+          }
+        }).catch(err => {
+          console.log('[Native Bridge Call]', action, data, err);
+        });
       }
     }
 
